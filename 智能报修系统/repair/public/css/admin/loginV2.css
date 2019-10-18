@@ -1,0 +1,209 @@
+body{
+	margin: 0;
+}
+/*.logo{*/
+	/*background-image: url(../../images/admin/index.jpg);*/
+	/*background-size: 100%;*/
+	/*background-repeat:no-repeat;*/
+/*}*/
+#background{
+	position:fixed;
+	width:100%;
+	height:100%;
+}
+
+@media screen and (max-width:1024px){
+	.login{
+		position: absolute;
+		height: 60%;
+		width: 35%;
+		left:50%;
+		top:6%;
+		background-image: url(../../images/admin/login.png);
+		background-size: 100% ;
+		background-repeat:no-repeat;
+	}
+	.aboutLogin{
+		width:50%;
+		height:45%;
+		background: white;
+		border-radius: 3%;
+		margin-top: 40px ;
+		margin-left: 150px ;
+	}
+	.inputCss{
+		color: white !important;
+		background: #42bd99 !important;
+		height: 20px !important;
+	}
+	/*自动登录样式*/
+	.checkbox-wrap{
+		width: 50%;
+		position: relative;
+		height: 40%;
+	}
+	input[type="checkbox"]{
+		/* width: 40px; */
+		/* height: 40px; */
+		/* -webkit-border-radius: 50%; */
+		display: none;
+	}
+	input[type="checkbox"]+label {
+		display: inline-block;
+		width: 48%;
+		margin-top: 10px;
+		margin-left: 5px;
+		text-align: left;
+		-webkit-box-sizing: border-box;
+	}
+
+	label::before {
+		content: "";
+		display: inline-block;
+		width: 25px;
+		height: 25px;
+		background:#f1840d;
+		vertical-align: middle;
+		-webkit-border-radius: 50%;
+		margin-right: 5px;
+		-webkit-box-sizing:border-box;
+		-webkit-transition:background ease-in .5s
+	}
+
+	input[type="checkbox"]:checked+label::before{
+		background-color: rgb(53, 183, 111);
+		border: 3px #EEEEEE solid;
+	}
+}
+@media screen and (min-width:1024px) and (max-width:1600px){
+	.login{
+		position: absolute;
+		height: 60%;
+		width: 35%;
+		left:50%;
+		top:6%;
+		background-image: url(../../images/admin/login.png);
+		background-size: 100% ;
+		background-repeat:no-repeat;
+	}
+	.aboutLogin{
+		width:50%;
+		height:45%;
+		background: white;
+		border-radius: 3%;
+		margin-top: 16%;
+		margin-left: 45% ;
+	}
+	.inputCss{
+		color: white !important;
+		background: #42bd99 !important;
+
+	}
+
+	/*自动登录样式*/
+	.checkbox-wrap{
+		width: 200%;
+		position: relative;
+		height: 40%;
+	}
+	input[type="checkbox"]{
+		/* width: 40px; */
+		/* height: 40px; */
+		/* -webkit-border-radius: 50%; */
+		display: none;
+	}
+	input[type="checkbox"]+label {
+		display: inline-block;
+		width: 48%;
+		margin-top: 10px;
+		margin-left: 5px;
+		text-align: left;
+		-webkit-box-sizing: border-box;
+	}
+
+	label::before {
+		content: "";
+		display: inline-block;
+		width: 25px;
+		height: 25px;
+		background:#f1840d;
+		vertical-align: middle;
+		-webkit-border-radius: 50%;
+		margin-right: 5px;
+		-webkit-box-sizing:border-box;
+		-webkit-transition:background ease-in .5s
+	}
+
+	input[type="checkbox"]:checked+label::before{
+		background-color: rgb(53, 183, 111);
+		border: 3px #EEEEEE solid;
+	}
+}
+@media screen and (min-width:1600px){
+	.login{
+		position: absolute;
+		height: 45%;
+		width: 35%;
+		left:52%;
+		top:10%;
+		background-image: url(../../images/admin/login.png);
+		background-size: 100% ;
+		background-repeat:no-repeat;
+	}
+	.aboutLogin{
+		width:45%;
+		height:40%;
+		background: white;
+		border-radius: 3%;
+		margin-top: 17.5%;
+		margin-left: 45%;
+	}
+	.inputCss{
+		color: white !important;
+		background: #42bd99 !important;
+
+	}
+
+	/*自动登录样式*/
+	.checkbox-wrap{
+		width: 90%;
+		position: relative;
+		height: 40%;
+	}
+	input[type="checkbox"]{
+		/* width: 40px; */
+		/* height: 40px; */
+		/* -webkit-border-radius: 50%; */
+		display: none;
+	}
+	input[type="checkbox"]+label {
+		display: inline-block;
+		width: 48%;
+		margin-top: 10px;
+		margin-left: 5px;
+		text-align: left;
+		-webkit-box-sizing: border-box;
+	}
+
+	label::before {
+		content: "";
+		display: inline-block;
+		width: 25px;
+		height: 25px;
+		background:#f1840d;
+		vertical-align: middle;
+		-webkit-border-radius: 50%;
+		margin-right: 5px;
+		-webkit-box-sizing:border-box;
+		-webkit-transition:background ease-in .5s
+	}
+
+	input[type="checkbox"]:checked+label::before{
+		background-color: rgb(53, 183, 111);
+		border: 3px #EEEEEE solid;
+	}
+
+}
+
+
+

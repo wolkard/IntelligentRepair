@@ -1,0 +1,185 @@
+.worker{
+    height:100px;
+    margin-top:10px;
+    border:1px solid #eeeeee;
+    border-radius:5px;
+    color:white;
+    cursor:pointer;
+}
+
+
+@media screen and (min-width:1600px) {
+    .smallBody{
+        height:auto;
+        width:1300px;
+        margin-left:24%;
+        margin-top:50px;
+    }
+    .workerList{
+        width:26%;
+        border:0;
+        position:absolute;
+        top:18%;
+        left: 28%;
+    }
+    .edit{
+        position:absolute;
+        left: 45%;
+        top:10%;
+    }
+    .workerListTwo{
+        max-height:700px;
+    }
+    .workerListWord{
+        margin-top:2.8%;
+        margin-left: -30px;
+        height: auto;
+        width: 250px;
+        font-size: 25px;
+        font-weight: 600;
+        color:#338e96;
+        border-bottom: 5px solid #338e96;
+    }
+    .workerListWordOtherLine{
+        margin-left: -30px;
+        height: 10px;
+        width: 50px;
+        border-bottom: 5px solid #338e96;
+    }
+    .addAndInformation{
+        position:absolute;
+        top:19%;
+        left:62%;
+    }
+    .addAndInformationTwo{
+        width:420px;
+        height:620px;
+    }
+    .inputCss{
+        margin-top:5%;
+    }
+    .information{
+        margin-top:10%;
+    }
+    .img{
+        width:30%;
+        height:100px;
+    }
+
+}
+
+
+@media screen and (min-width:1024px) and (max-width:1600px){
+    .smallBody{
+        height:auto;
+        width:1000px;
+        margin-left:24%;
+        margin-top:50px;
+    }
+    .edit{
+        position:absolute;
+        left: 45%;
+        top:15%;
+    }
+    .workerList{
+        width: 26%;
+        border:0;
+        position:absolute;
+        top:22%;
+        left: 28%;
+    }
+    .workerListTwo{
+        max-height:500px;
+    }
+    .workerListWord{
+        margin-top:5%;
+        margin-left: -20px;
+        height: auto;
+        width: 250px;
+        font-size: 25px;
+        font-weight: 600;
+        color:#338e96;
+        border-bottom: 5px solid #338e96;
+    }
+    .workerListWordOtherLine{
+        margin-left: -20px;
+        height: 10px;
+        width: 50px;
+        border-bottom: 5px solid #338e96;
+    }
+
+    .addAndInformation{
+        position:absolute;
+        top:22%;
+        left:58%;
+    }
+    .addAndInformationTwo{
+        width:380px;
+        height:450px;
+    }
+    .information{
+        margin-top:6%;
+    }
+    .img{
+        width:35%;
+        height:100px;
+    }
+}
+
+
+@media screen and (max-width:1024px){
+    .smallBody{
+        height:auto;
+        width:800px;
+        margin-left:24%;
+        margin-top:50px;
+    }
+    .edit{
+        position:absolute;
+        left: 40%;
+        top:15%;
+    }
+    .workerList{
+        width: 26%;
+        border:0;
+        position:absolute;
+        top:25%;
+        left: 28%;
+    }
+    .workerListTwo{
+        max-height:400px;
+    }
+    .workerListWord{
+        margin-top:5%;
+        margin-left: -20px;
+        height: auto;
+        width: 250px;
+        font-size: 25px;
+        font-weight: 600;
+        color:#338e96;
+        border-bottom: 5px solid #338e96;
+    }
+    .workerListWordOtherLine{
+        margin-left: -20px;
+        height: 10px;
+        width: 50px;
+        border-bottom: 5px solid #338e96;
+    }
+
+    .addAndInformation{
+        position:absolute;
+        top:19%;
+        left:58%;
+    }
+    .addAndInformationTwo{
+        width:350px;
+        height:420px;
+    }
+    .information{
+        margin-top:0%;
+    }
+    .img{
+        width:35%;
+        height:100px;
+    }
+}

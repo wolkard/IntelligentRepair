@@ -1,0 +1,505 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>报修</title>
+	    <link href="css/mui.min.css" rel="stylesheet"/>
+	    <link href="css/mui.picker.css" rel="stylesheet"/>
+	    <link href="css/mui.poppicker.css" rel="stylesheet"/>
+	    <script src="js/jquery.js" ></script>
+		<script src="js/jquery-3.2.1.min.js"></script>
+		<script src="js/ajaxfileupload.js"></script>
+		<script src="js/mui.min.js"></script>
+		<script src="js/mui.picker.js"></script>
+		<script src="js/mui.poppicker.js"></script>
+		<!--<script type="text/javascript">
+			mui.init()
+		</script>-->
+	</head>
+
+	<body>
+	<!-- 侧滑导航根容器 -->
+	<div class=" mui-draggable mui-scalable">
+    <!-- 主页面容器 -->
+    <div class="mui-inner-wrap"> 
+	 
+	    <aside class="mui-off-canvas-left">
+	      <div class="mui-scroll-wrapper">
+	        <div class="mui-scroll">
+	          
+	          ...
+	        </div>
+	      </div>
+	    </aside>
+	    <!-- 主页面标题 -->
+	    <header class="mui-bar mui-bar-nav" style="background-color: rgba(254, 201, 16, 1);">
+	      <a class="mui-icon mui-icon-left-nav mui-pull-left mui-action-back" style="color: #FFFFFF;"></a>
+	      <h1 class="mui-title" style="color: #FFFFFF;font-size: 22.5px;"><b>智能报修</b></h1>
+	    </header>
+	    <!-- 主页面内容容器 -->
+	    <div class="mui-content mui-scroll-wrapper">
+	      <div class="mui-scroll">
+	        <!-- 主界面具体展示内容 -->
+	        <div class="mui-card" >
+				<div class="mui-card-header" style="color: #FFFFFF;background-color: rgba(254, 201, 16, 1);">报修</div>
+				<div id="userInformation" class="mui-card-content">
+					<div class="mui-card-content-inner">
+						<div class="mui-card">
+				<div class="mui-card-content">
+					<div class="mui-card-content-inner">
+						<b>使用说明：</b>拍照后即可自动识别拍摄照片的物品以及地理位置，确认无误后提交即可。
+					</div>
+				</div>
+			</div>
+
+	        <div class="mui-card">
+				<div class="mui-card-content">
+
+					<div class="mui-card-content-inner">
+						<div id="cancel">
+							
+						</div>
+    				<form class="mui-input-group" style="background-color: rgba(255, 255, 255, 0);">
+					    <div id="allInformation"></div>
+					    <div class="mui-button-row" >
+					        <button onclick="getImage()" type="button" class="mui-btn" style="width:200px;background-color: rgba(255, 255, 255, 1);" >拍照</button>
+					    </div>
+					    <div class="mui-button-row" id='push'>
+					        <button id="wifipost" type="button" class="mui-btn" data-loading-text="提交中" style="width:200px;background-color: rgba(255, 255, 255, 1);" >提交</button>
+					    </div>
+					</form>
+					
+    			</div>
+				</div>
+			</div>
+			
+			<div class="mui-card">
+				<div class="mui-card-content">
+					<div class="mui-card-content-inner">
+						<p >图片预览：（将在拍照后显示）</p>						
+						<input type="hidden" id="picIndex" value="0">  
+	            		<div id='image-list' class="row image-list">  
+    					</div>
+				</div>
+			</div>
+					</div>
+				</div>
+			</div>
+       	
+      	</div> 
+      </div>
+    </div> 
+</body>
+<script src="js/ajaxfileupload.js"></script>
+<script>
+	
+	var wifiScaning = false;
+	
+	mui.plusReady(function(){
+		addform();//将表单输出到网页上；
+		getWifi();//获取wifi信息并上传 
+		
+		setTimeout(function(){
+			setScroll();
+		},500);
+	});
+
+	//选择菜单
+	
+	
+	//页面滚动
+	function setScroll(){
+		mui('.mui-scroll-wrapper').scroll({
+			scrollY: true, //是否竖向滚动
+			scrollX: false, //是否横向滚动
+ 			startX: 0, //初始化时滚动至x
+ 			startY: 0, //初始化时滚动至y
+			indicators: true, //是否显示滚动条
+			deceleration:0.0006, //阻尼系数,系数越小滑动越灵敏
+			bounce: true //是否启用回弹
+		}); 
+	}
+
+
+	//发送上级位置信息
+	function sendTopInformation(thisId){
+		var allId = ['large_area_name','part_area_name','building','floor','room','item','description'];
+		var topInformation='{';
+		var mindIdNum='';
+		var jud=0;
+		var judgeRemove=1;
+		var noId=new Array();
+		for(var i=0; i<allId.length; i++){
+			if(i!=0){
+				var judge=$('#'+allId[i-1]).val();
+			}else{
+				var judge=1;
+			}
+			var theValue=$('#'+allId[i]).val();
+			if(judge==""){
+				mui.toast('请先将上面内容补充完整',{ duration:'short', type:'p' });
+				judgeRemove=0;
+				
+			}else if(allId[i]==thisId){
+				if(i==0){
+					topInformation="F";
+				}else{
+					topInformation = topInformation.substring(0, topInformation.length - 1); 
+					topInformation+="}";
+				}
+				
+				findBottomData(topInformation,thisId);
+				mindIdNum=i;
+				break;
+			}else{
+				topInformation+='"'+allId[i]+'":"'+theValue+'",';
+			}			
+		}
+		if(judgeRemove==1){
+			for(mindIdNum; mindIdNum+1<allId.length; mindIdNum++){
+				$("#"+allId[mindIdNum+1]).val("");
+			}
+		}	
+	}
+	//发送请求查找下级数据
+	function findBottomData(topInformation,thisId){
+		$.ajax({
+			url:"http://219.218.160.81/repair/public/findBottomInformation",
+			async:false,
+			type:'POST',
+			dateType:'json',
+			data:{data:topInformation,id:thisId},
+			success:function(data){
+				var	selectObj=new Object();
+				var arry=new Array();
+				var num=0;
+				var theId='';
+				for(oneData in data['data']){
+					for(remind in data['data'][oneData]){
+						for(id in data['data'][oneData][remind]){
+							selectObj.value=num;
+							selectObj.text=data['data'][oneData][remind][id];
+							theId=id;
+							num+=1;
+							arry.push(selectObj);
+							selectObj=new Object();
+						}
+					}
+					
+				}
+				showSelect(arry,theId);				
+				
+			},
+			error:function(data){
+				console.log('error');
+			}
+		})
+	}
+	//弹出选择器
+	function showSelect(arry,id){
+		var picker = new mui.PopPicker();
+		picker.setData(arry);
+		picker.pickers[0].setSelectedIndex(1, 2000);
+		//picker.pickers[0].setSelectedValue('second', 2000);
+		picker.show(function(SelectedItem) {
+			$("#"+id).val(SelectedItem[0]['text'])
+		})
+	}
+
+	
+	//获取无线信息
+	//获取需要两秒时间	获取的无线信息列表变量叫 wifis
+	function getWifi(){
+		var Context = plus.android.importClass("android.content.Context");  
+		var WifiManager = plus.android.importClass("android.net.wifi.WifiManager");  
+		var wifiManager = plus.android.runtimeMainActivity().getSystemService(Context.WIFI_SERVICE);
+		wifiScaning=true;
+        wifiManager.startScan();//开始扫描
+        mui.toast('正在扫描…',{ duration:2000, type:'div' });
+        //延迟两秒返回结果
+		setTimeout(function(){
+			SSIDs=wifiManager.getScanResults();
+			wifiScaning=false;
+
+			//  wifis 为即将上传的mac信息。
+	      	var wifis = HandleWifiInfo(SSIDs.toString());
+	      	//mac为测试用数据
+	      	var mac='[{"mac":"0a:69:6c:76:fc:bb","level":"-45"},{"mac":"06:69:6c:76:fc:ba","level":"-47"},{"mac":"06:69:6c:76:fc:a6","level":"-51"},{"mac":"0a:69:6c:76:fc:a7","level":"-58"},{"mac":"0a:69:6c:77:09:cf","level":"-69"},{"mac":"06:69:6c:77:00:9e","level":"-72"}]';
+
+	      	var Wifilength = wifis.length;
+			//对于一些渣渣手机的信息长度是否等于0的判断
+			if(Wifilength>0){
+	      		mui.toast('获取成功',{ duration:'short', type:'div' });
+	      		//ajax
+	      		$.ajax({
+					url:'http://219.218.160.81/repair/public/location',
+					type:'POST',
+					async:false,
+					data:{
+						mac:wifis 
+					},
+//					
+					dataType:'json',
+					success:function(result){
+						var allId=['large_area_name','part_area_name','building','floor','room'];
+						var reg = new RegExp("[\\u4E00-\\u9FFF]+","g");
+						for(i=0;i<allId.length;i+=1){
+							var val=result['data'].split(";")[0].split(':')[0].split(' ')[i];
+							if(i==0){
+								if(reg.test(val[0])){  
+									mui.toast('位置识别成功',{ duration:'short', type:'div' });
+								}else{
+									mui.toast('位置识别错误',{ duration:'short', type:'div' });
+									$("#cancel").html('<button onClick="seeInformation()" class="mui-btn mui-btn-red" style="font-size:15px;;left:90%;background-color: red;border-radius:50%;">?</button>')
+									break;
+								}
+								
+							}
+							$('#'+allId[i]).val(result['data'].split(";")[0].split(':')[0].split(' ')[i])
+							
+						}
+						
+					},
+					error:function(msg){
+						mui.toast('上传发生错误',{ duration:'short', type:'div' });
+					}
+				});
+			}else{
+				mui.toast('未获取到信息，请检查WiFi',{ duration:'short', type:'div' });
+			}
+		});
+        
+	}
+	
+	//处理无线信息  String to Array
+	function HandleWifiInfo(info){
+		info = info.substring(1,info.length-1);
+		infos = new Array();
+		infos = info.split(",");
+		wifi="";
+		wifis='[';
+		for(i=0;i<infos.length;i++){
+			item = infos[i].split("SSID: ");
+			if(item[0]==" B"){
+				wifi+='{"mac":';
+				wifi+='"'+item[1]+'"';
+			}
+			item = infos[i].split("evel: ");
+			if(item[0] ==" l"){
+					wifi+=',"level":';
+					wifi+='"'+item[1]+'"';
+					wifi+="},"
+					wifis+=wifi;
+			}
+		}
+		wifis=wifis.substr(0,wifis.length-1);
+		wifis+=']';
+		return wifis;
+	}
+	
+	//打开子页面
+	function seeInformation(){
+		mui.openWindow({
+		    url:"position.html",
+		    show:{
+		      autoShow:true,//页面loaded事件发生后自动显示，默认为true
+		      aniShow:'slide-in-right',//页面显示动画，默认为”slide-in-right“；
+		      duration:100,//页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；
+		      event:'titleUpdate',//页面显示时机，默认为titleUpdate事件时显示
+		      extras:{}//窗口动画是否使用图片加速
+		    },
+		    waiting:{
+		      autoShow:true,//自动显示等待框，默认为true
+		      title:'正在加载...',//等待对话框上显示的提示内容
+		    }
+		});
+	}
+	
+/*————————————————————————————————————————————————————————————————————————————————*/
+/*————————————————————————————————————————————————————————————————————————————————*/
+/*————————————————————————————————————————————————————————————————————————————————*/
+
+
+	//图片识别
+	function recognition(){
+		//延迟两秒返回结果
+		setTimeout(function(){
+		$.ajax({
+			url:'http://219.218.160.81/repair/public/recognition',
+			dataType:"json",
+			async:true,
+			type:"POST",
+			success:function(data){
+				mui.toast('图片识别成功',{ duration:'', type:'div' });
+				var allId = ['item','description'];
+				for(var i=0;i<allId.length;i+=1){
+					$('#'+allId[i]).val(data['data'][0]['information'][allId[i]]);
+				}
+			},
+			error:function(data){
+				console.log(data);
+			}
+		})
+		},1000);
+	}
+
+	//将报修表单输出到网页上
+	function addform(){
+		var allId = ['large_area_name','part_area_name','building','floor','room','item','description','details'];
+		var allName = ['大区域','小区域','建筑名称','楼层','房间号','物品名称','物品描述','损坏描述'];
+		/*var allExample = ['生活区','男生宿舍','2号楼','3','10','窗帘','蓝色','ee'];*/
+		var allHtml='';
+		for(var i = 0 ; i<allId.length ; i+=1 ){
+			allHtml += '<div id="asdf" class="mui-input-row">'+
+							'<label>'+allName[i]+'</label>';
+			if(i==allId.length-1){
+				allHtml+='<input id="'+allId[i]+'" type="text" class="mui-input-clear" value="">';
+			}else{
+				allHtml+='<input id="'+allId[i]+'" type="text" onClick="sendTopInformation(this.id);" class="mui-input-clear" value="" readonly=true>';
+			}
+			allHtml+='</div>';
+		}
+		$('#allInformation').html(allHtml);
+	}
+
+
+
+	//事件函数：当提交按钮被点击，提交表单 
+	$("#wifipost").click(function(){
+		
+		var de=$('#details').val()
+		console.log(de.length)
+		if(de.length>50){
+			mui.toast('超出长度限制，最多为50个字',{ duration:'short', type:'div' });
+		}else{
+			function getUuid(){
+			uuid = plus.device.uuid;
+		}
+		if(window.plus){  
+				getUuid();
+		}else{  
+			document.addEventListener("plusready",getUuid,false);  
+		} 
+		
+		mui(this).button('loading');
+    	mui.ajax('http://219.218.160.81/repair/public/addTask',{
+			data:{
+				uuid:uuid,
+				large_area_name:$("#large_area_name").val(),
+				part_area_name:$("#part_area_name").val(),
+				building:$("#building").val(),
+				floor:$("#floor").val(),
+				room:$("#room").val(),
+				item:$('#item').val(),
+				description:$('#description').val(),
+				details:$('#details').val()
+			},
+			dataType:'json',//服务器返回json格式数据
+			type:'post',//HTTP请求类型
+			timeout:3000,//超时时间设置为3秒；
+			//headers:{'Content-Type':'application/json'},	              
+			success:function(data){
+				if(data['result']==1){
+					mui.toast('报修成功',{ duration:'short', type:'div' });
+					mui("#wifipost").button('reset');
+					window.location.href='userTask.blade.html'
+				}else if(data['result']==2){
+					mui.toast('未找到物品',{ duration:'short', type:'div' });
+					mui('#wifipost').button('reset');
+				}else{
+					mui.toast(data['remind'],{ duration:'short', type:'div' });
+					mui('#wifipost').button('reset');
+				}
+			},
+			error:function(xhr,type,errorThrown){
+				//异常处理；
+				console.log(type); 
+				mui("#wifipost").button('reset');
+				plus.nativeUI.toast('请求超时或异常');
+				$("#push").html('<button id="wifipost" type="button" class="mui-btn" data-loading-text="提交中" style="width:200px;background-color: rgba(255, 255, 255, 1);" >提交</button>');
+
+			}
+		});
+		}
+		
+     	
+	});
+	
+	//图片显示在网页上，上传图片
+	 function showPics(url,name){          
+         //根据路径读取到文件   
+           plus.io.resolveLocalFileSystemURL(url,function(entry){  
+               entry.file( function(file){  
+                   var fileReader = new plus.io.FileReader();  
+                   fileReader.readAsDataURL(file);  
+                      fileReader.onloadend = function(e) {  
+                           var picUrl = e.target.result.toString();  
+                           $.ajax({
+								url:"http://219.218.160.81/repair/public/getImage",
+								async:false,
+								type:'POST',
+								dateType:'json',
+								data:{image:picUrl},
+								success:function(data){
+									mui.toast('正在识别图片',{ duration:9000, type:'div' });
+									recognition();
+								},
+								error:function(error){
+									mui.toast('请求错误',{ duration:'short', type:'div' });
+
+								}
+								});
+                           var picIndex = $("#picIndex").val();  
+                        var nowIndex = parseInt(picIndex)+1;  
+                        $("#picIndex").val(nowIndex);  
+                        var html = '';
+                        html += '<div class="image-item " id="item'+nowIndex+'">';
+                        html += '<div><img src="'+picUrl+'" class="upload_img" style="width:100%;height:100%;"/></div>';  
+                        html += '</div>';  
+                       
+                        $("#image-list").html(html);   
+                   }  
+               });  
+          });   
+       }  
+        //压缩图片    
+       function compressImage(url,filename){   
+       	var name="_doc/upload/"+filename;
+           plus.zip.compressImage({    
+                   src:url,//src: (String 类型 )压缩转换原始图片的路径    
+                   dst:name,//压缩转换目标图片的路径    
+                   quality:50,//quality: (Number 类型 )压缩图片的质量.取值范围为1-100   
+                   overwrite:true//overwrite: (Boolean 类型 )覆盖生成新文件    
+               },    
+               function(zip) {  
+                   //页面显示图片  
+                   showPics(zip.target,name);  
+               
+               },function(error) {    
+                   plus.nativeUI.toast("压缩图片失败，请稍候再试");    
+           });    
+       }   
+        
+    //调用手机摄像头并拍照  
+   function getImage() {  
+       var cmr = plus.camera.getCamera();    
+       cmr.captureImage(function(p) {    
+           plus.io.resolveLocalFileSystemURL(p, function(entry) {  
+               compressImage(entry.toLocalURL(),entry.name);    
+           }, function(e) {    
+               plus.nativeUI.toast("读取拍照文件错误：" + e.message);    
+           });    
+       }, function(e) {    
+       }, {    
+           filter: 'image'   
+       });    
+   }  
+
+
+</script>	
+	
+
+</html>

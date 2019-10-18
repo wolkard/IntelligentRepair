@@ -1,0 +1,135 @@
+/*html{
+	height: 810px;
+	width: 1440px;
+}*/
+body{
+	margin: 0;
+}
+@media screen and (min-width:1600px) {
+	.menu{
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width:280px;
+		
+		background-size: 100% 100%;
+	}
+	#logout{
+		position: relative;
+		top: 250px;
+		width:80%;
+		margin-left: 10%;
+		margin-top: 20%;
+		height: 50px;
+		background-size: 40% auto;
+		background-repeat:no-repeat;
+		background-position: center;
+		background-image: url(../images/admin/exit.png);
+	}
+
+}
+@media screen and (min-width:1024px) and (max-width:1600px){
+	.menu{
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width:250px;
+		background-size: 100% 100%;
+	}
+	#logout{
+		position: relative;
+		top:150px;
+		width:80%;
+		margin-left: 10%;
+		margin-top: 20%;
+		height: 50px;
+		background-size: 40% auto;
+		background-repeat:no-repeat;
+		background-position: center;
+		background-image: url(../images/admin/exit.png);
+	}
+
+}
+
+@media screen and (max-width:1024px){
+	.menu{
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width:200px;
+		
+		background-size: 100% 100%;
+	}
+	#logout{
+		position: relative;
+		top: 100px;
+		width:80%;
+		margin-left: 10%;
+		margin-top: 20%;
+		height: 50px;
+		background-size: 40% auto;
+		background-repeat:no-repeat;
+		background-position: center;
+		background-image: url(../images/admin/exit.png);
+	}
+
+}
+
+
+.list_item{
+	position: relative;
+	top: 25%;
+	width:80%;
+	margin-left: 10%;
+	margin-top: 1.8%;
+	height: 7%;
+	background-size: 55% auto;
+	background-repeat:no-repeat;
+	background-position: center;
+	cursor:pointer;
+}
+#Administrator{
+	position: relative;
+	width:70.98% ;
+	margin-left: 14.51%;
+	height: 12%;
+	top: 10%;
+	background-image: url(../images/admin/Administrator.png);
+	background-size: 100% auto;
+	background-repeat:no-repeat;
+}
+.listHover{
+	background-color: rgba(255,255,255,0.4);
+	border:2px solid rgba(255,255,255,0);
+	border-radius:10px;
+	border-left: 20px;
+	border-right: 20px;
+}
+
+
+
+#list_home{
+	background-image: url(../images/admin/list_GuanLiRenYuan.png);
+}
+#list_worker{
+	background-image: url(../images/admin/list_GongRenLieBiao.png);
+}
+#list_task{
+	background-image: url(../images/admin/list_RenWuLieBiao.png);
+}
+#list_items{
+	background-image: url(../images/admin/list_WuPinZiChan.png);
+}
+#list_datas{
+	background-image: url(../images/admin/list_ShuJuTongJi.png);
+}
+
+
+.listClicked{
+	background-color: rgba(255,255,255,0.4);border:2px solid rgba(255,255,255,0);border-radius:10px;
+	border-left: 20px;
+	border-right: 20px;
+}

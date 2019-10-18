@@ -1,0 +1,199 @@
+body{
+    background: #eeeeee;
+}
+
+@media screen and (min-width:1600px){
+    .smallBody{
+        height:auto;
+        width:1300px;
+        margin-left:24%;
+        margin-top:50px;
+    }
+    .title{
+        margin-left:-30px;
+    }
+    .column{
+        float: left;
+        width:20%;
+        height:auto;
+        margin-left:50px;
+        padding-top:20px;
+    }
+
+    .changeInformationButton2{
+        margin-left:50px;
+        margin-bottom:10px;
+    }
+
+}
+@media screen and (min-width:1024px) and (max-width:1600px){
+    .smallBody{
+        height:auto;
+        width:1000px;
+        margin-left:24%;
+        margin-top:50px;
+    }
+    .column{
+        float: left;
+        width:20%;
+        height:auto;
+        margin-left:35px;
+        padding-top:20px;
+    }
+    .title{
+        margin-left:-20px;
+    }
+
+    .changeInformationButton2{
+        margin-left:30px;
+        margin-bottom:10px;
+    }
+}
+@media screen and (max-width:1024px) {
+    .smallBody {
+        height: auto;
+        width: 800px;
+        margin-left: 24%;
+        margin-top: 50px;
+    }
+    .column{
+        float: left;
+        width:20%;
+        height:auto;
+        margin-left:20px;
+        padding-top:20px;
+    }
+
+    .title {
+        margin-left: -20px;
+    }
+    .changeInformationButton2{
+        margin-left:30px;
+        margin-bottom:10px;
+    }
+}
+
+.titleWord{
+    height: auto;
+    width: 250px;
+    font-size: 25px;
+    font-weight: 600;
+    color:#2ab27b;
+    border-bottom: 5px solid #2ab27b;
+}
+.titleLine{
+    height: 10px;
+    width: 50px;
+    border-bottom: 5px solid #2ab27b;
+}
+
+/*添加管理员*/
+.addAdmin{
+    height: 40px;
+    width: 40px;
+    line-height: 35px;
+    text-align: center;
+    font-weight: 800;
+    font-size:40px;
+    border-radius: 50%;
+    color:white;
+    background: dodgerblue;
+    border:0;
+    margin-left: 20px;
+    float: right;
+    cursor:pointer;
+    user-select: none;
+}
+.addAdmin:hover {
+    background-color: #2ab27b;
+}
+.addAdmin:active{
+    color:blue;
+}
+.addAdminMian{
+    position: absolute;
+    height: 450px;
+    width: 350px;
+    top:10%;
+    left:40%;
+    z-index: 1;
+}
+.addAdminButton{
+    width:150px;
+    margin-top:20px;
+    font-size: 25px;
+    font-weight: 500;
+}
+.addAdminButton:hover{/*移动上去效果*/
+    color:#2ca02c;
+}
+.addAdminButton:active {/*点击效果*/
+    color:#3c763d !important;
+}
+.addAdminButton:visited{/*释放后效果*/
+    color:#2ab27b !important;
+}
+.addAdminButton:link{
+    color:#2ab27b ;
+}
+.addAdminInput{
+    border-left:none;
+    border-right:none;
+    border-top:none;
+    border-bottom:none;
+    margin-left: 76px;
+    background:#ffffff !important;
+    width: 250px;
+    font-size:20px;
+    font-weight: 400;
+}
+
+
+/*管理员列表处*/
+.bigAdminList{
+    height:auto;
+    width:100%;
+    float:left;
+}
+.aAdmin{
+    height:auto;
+    width:100%;
+    top: 20px;
+    background: #2ab27b;
+    border-radius: 6%;
+    float:left;
+}
+.oneAdminTop{
+    /*height:150px;*/
+    width:100%;
+    background:white;
+    border-radius: 6%;
+}
+.oneAdminBottom{
+    height:auto;
+    width:100%;
+    background: #2ab27b;
+    border-radius: 6%;
+}
+.imageInformation{
+    position: relative;
+    width:40px;
+    margin-left:10px;
+    top: 30px;
+    color:white;
+}
+.input{
+    background-color: #2ab27b !important;
+    border-left:none;
+    border-right:none;
+    border-top:none;
+    border-bottom:none;
+    color:#ffffff;
+    margin-left: 50px;
+    width:65%;
+}
+
+.changeInformationButton{
+    margin-left:35%;
+    margin-bottom:10px;
+}

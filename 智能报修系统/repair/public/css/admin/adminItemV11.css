@@ -1,0 +1,169 @@
+@media screen and (max-width:1024px){
+    .smallBody{
+        width:800px;
+        height:auto;
+    }
+
+    .itemListWord{
+        margin-top:10%;
+        margin-left: 30%;
+        height: auto;
+        width: 250px;
+        font-size: 25px;
+        font-weight: 600;
+        color:rgb(51, 122, 183);
+        border-bottom: 5px solid rgb(51, 122, 183);
+    }
+    .itemListWordOtherLine{
+        margin-left: 30%;
+        height: 10px;
+        width: 50px;
+        border-bottom: 5px solid rgb(51, 122, 183);
+    }
+    .itemInformationSize{
+        width:450px;
+        height:1000px;
+    }
+    .itemSearch{
+        position:absolute;
+        top:140px;
+        left: 280px;
+        width:200px;
+    }
+    .positionSearch{
+        position:absolute;
+        top:140px;
+        left: 385px;
+        width:200px;
+    }
+    .timeSearch{
+        position:absolute;
+        top:140px;
+        left: 490px;
+    }
+    .addItemSize{
+        margin-top:260px;
+        width:73%;
+    }
+    .itemInformation{
+        margin-top:-930px;
+        margin-left:708px;
+    }
+
+}
+@media screen and (min-width:1024px) and (max-width:1600px){
+    .smallBody{
+        width:1000px;
+        height:auto;
+    }
+    .itemListWord{
+        margin-top:5%;
+        margin-left: 30%;
+        height: auto;
+        width: 250px;
+        font-size: 25px;
+        font-weight: 600;
+        color:rgb(51, 122, 183);
+        border-bottom: 5px solid rgb(51, 122, 183);
+    }
+    .itemListWordOtherLine{
+        margin-left: 30%;
+        height: 10px;
+        width: 50px;
+        border-bottom: 5px solid rgb(51, 122, 183);
+    }
+    .itemSearch{
+        position:absolute;
+        top:120px;
+        left: 370px;
+        width:200px;
+    }
+    .positionSearch{
+        position:absolute;
+        top:120px;
+        left: 475px;
+        width:200px;
+    }
+    .timeSearch{
+        position:absolute;
+        top:120px;
+        left: 580px;
+    }
+    .addItemSize{
+        margin-top:300px;
+        width:62%;
+    }
+    .itemInformationSize{
+        width:490px;
+        height:900px;
+    }
+    .itemInformation{
+        margin-top:-950px;
+        margin-left:820px;
+    }
+    .itemListHeight{
+        max-height:886px;
+    }
+
+}
+@media screen and (min-width:1600px){
+    .smallBody{
+        width:1300px;
+        height:auto;
+    }
+    .itemListWord{
+        margin-top:3.5%;
+        margin-left:30%;
+        height: auto;
+        width: 250px;
+        font-size: 25px;
+        font-weight: 600;
+        color:rgb(51, 122, 183);
+        border-bottom: 5px solid rgb(51, 122, 183);
+    }
+    .itemListWordOtherLine{
+        margin-left:30.5%;
+        height: 10px;
+        width: 50px;
+        border-bottom: 5px solid rgb(51, 122, 183);
+    }
+    .itemSearch{
+        position:absolute;
+        top:150px;
+        left: 480px;
+        width:200px;
+    }
+    .positionSearch{
+        position:absolute;
+        top:150px;
+        left: 600px;
+        width:200px;
+    }
+    .timeSearch{
+        position:absolute;
+        top:150px;
+        left: 720px;
+    }
+    .addItemSize{
+        margin-top:320px;
+        width:55%;
+    }
+    .itemInformationSize{
+        width:600px;
+        height:920px;
+    }
+    .itemInformation{
+        margin-top:-930px;
+        margin-left:1108px;
+    }
+    .itemListHeight{
+        max-height:875px;
+    }
+}
+
+
+
+
+.addItem{
+    margin-left:36%;
+}

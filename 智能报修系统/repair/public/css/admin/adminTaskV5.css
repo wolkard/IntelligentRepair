@@ -1,0 +1,196 @@
+@media screen and (max-width:1024px) {
+    .smallBody {
+        height: auto;
+        width: 800px;
+        margin-left: 24%;
+        margin-top: 50px;
+    }
+    .taskListWord{
+        margin-top:2.8%;
+        margin-left: -30px;
+        height: auto;
+        width: 250px;
+        font-size: 25px;
+        font-weight: 600;
+        color:#465b83;
+        border-bottom: 5px solid #465b83;
+    }
+    .taskListWordOtherLine{
+        margin-left: -30px;
+        height: 10px;
+        width: 50px;
+        border-bottom: 5px solid #465b83;
+    }
+    .time{
+        position:absolute;
+        top:60%;
+        left: 30%;
+        width:200px;
+        min-width:150px;
+    }
+    .position{
+        position:absolute;
+        top:40%;
+        left: 30%;
+        min-width:150px;
+    }
+    .item{
+        position:absolute;
+        top:15%;
+        left: 30%;
+        min-width:150px;
+    }
+    .taskList{
+        position:absolute;
+        top:15%;
+        left:50%;
+        min-width:40%;
+        height: 650px;
+    }
+    .echarts{
+        width: 950px;
+        height: auto;
+        margin-top:600px;
+        margin-left:26%;
+    }
+}
+
+
+@media screen and (min-width:1024px) and (max-width:1600px){
+    .smallBody {
+        height: auto;
+        width: 1000px;
+        margin-left: 24%;
+        margin-top: 50px;
+    }
+    .taskListWord{
+        margin-top:5%;
+        margin-left: -20px;
+        height: auto;
+        width: 250px;
+        font-size: 25px;
+        font-weight: 600;
+        color:#465b83;
+        border-bottom: 5px solid #465b83;
+    }
+    .taskListWordOtherLine{
+        margin-left: -20px;
+        height: 10px;
+        width: 50px;
+        border-bottom: 5px solid #465b83;
+    }
+    .time{
+        position:absolute;
+        top:76%;
+        left: 30%;
+        width:200px;
+        min-width:150px;
+    }
+    .position{
+        position:absolute;
+        top:49%;
+        left: 30%;
+        min-width:150px;
+    }
+    .item{
+        position:absolute;
+        top:15%;
+        left: 30%;
+        min-width:150px;
+    }
+    .taskList{
+        position:absolute;
+        top:15%;
+        left:50%;
+        min-width:40%;
+        height: 650px;
+    }
+    .echarts{
+        width: 950px;
+        height: auto;
+        margin-top:700px;
+        margin-left:26%;
+    }
+
+}
+
+@media screen and (min-width:1600px){
+    .smallBody {
+        height: auto;
+        width: 1300px;
+        margin-left: 24%;
+        margin-top: 50px;
+    }
+    .taskListWord{
+        margin-top:2.8%;
+        margin-left: -30px;
+        height: auto;
+        width: 250px;
+        font-size: 25px;
+        font-weight: 600;
+        color:#465b83;
+        border-bottom: 5px solid #465b83;
+    }
+    .taskListWordOtherLine{
+        margin-left: -30px;
+        height: 10px;
+        width: 50px;
+        border-bottom: 5px solid #465b83;
+    }
+    .time{
+        position:absolute;
+        top:60%;
+        left: 30%;
+        width:200px;
+        min-width:150px;
+    }
+    .position{
+        position:absolute;
+        top:40%;
+        left: 30%;
+        min-width:150px;
+    }
+    .item{
+        position:absolute; 
+        top:15%;
+        left: 30%;
+        min-width:150px;
+    }
+    .taskList{
+        position:absolute;
+        top:15%;
+        left:50%;
+        min-width:40%;
+        height: 650px;
+    }
+    .echarts{
+        width: 1100px;
+        height: auto;
+        margin-top:820px;
+        margin-left:30%;
+    }
+}
+
+
+
+.itemInfomrations{
+    margin-left:10%;
+    margin-top:3%;
+    height:20%;
+    color:#465b83;
+    font-size: 20px;
+    font-weight: 500;
+}
+.itemInformation{
+    font-size: 18px;
+    font-weight: 500;
+    margin-left:10%;
+}
+.otherInformation{
+    margin-top:-25px;
+    margin-left:24%;
+    font-size: 15px;
+    font-weight: 400;
+    width:75%;
+    word-wrap: break-word;
+}
